@@ -61,6 +61,10 @@
             this.txtInvoiceAve = new System.Windows.Forms.TextBox();
             this.labEnterSubtotal = new System.Windows.Forms.Label();
             this.txtEnterSubtotal = new System.Windows.Forms.TextBox();
+            this.labLargestInvoice = new System.Windows.Forms.Label();
+            this.txtLargestInvoice = new System.Windows.Forms.TextBox();
+            this.labSmallestInvoice = new System.Windows.Forms.Label();
+            this.txtSmallestInvoice = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // labSubtotal
@@ -149,7 +153,7 @@
             this.btnCalculate.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.btnCalculate.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.btnCalculate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnCalculate.Location = new System.Drawing.Point(142, 297);
+            this.btnCalculate.Location = new System.Drawing.Point(132, 375);
             this.btnCalculate.Name = "btnCalculate";
             this.btnCalculate.Size = new System.Drawing.Size(90, 30);
             this.btnCalculate.TabIndex = 8;
@@ -161,7 +165,7 @@
             // 
             this.btnExit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnExit.Location = new System.Drawing.Point(517, 297);
+            this.btnExit.Location = new System.Drawing.Point(507, 375);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(90, 30);
             this.btnExit.TabIndex = 11;
@@ -182,7 +186,7 @@
             // btnClearTotals
             // 
             this.btnClearTotals.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnClearTotals.Location = new System.Drawing.Point(320, 297);
+            this.btnClearTotals.Location = new System.Drawing.Point(310, 375);
             this.btnClearTotals.Name = "btnClearTotals";
             this.btnClearTotals.Size = new System.Drawing.Size(111, 30);
             this.btnClearTotals.TabIndex = 9;
@@ -268,13 +272,56 @@
             this.txtEnterSubtotal.Size = new System.Drawing.Size(100, 26);
             this.txtEnterSubtotal.TabIndex = 1;
             // 
+            // labLargestInvoice
+            // 
+            this.labLargestInvoice.AutoSize = true;
+            this.labLargestInvoice.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labLargestInvoice.Location = new System.Drawing.Point(122, 304);
+            this.labLargestInvoice.Name = "labLargestInvoice";
+            this.labLargestInvoice.Size = new System.Drawing.Size(121, 20);
+            this.labLargestInvoice.TabIndex = 18;
+            this.labLargestInvoice.Text = "Largest Invoice:";
+            // 
+            // txtLargestInvoice
+            // 
+            this.txtLargestInvoice.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtLargestInvoice.Location = new System.Drawing.Point(239, 298);
+            this.txtLargestInvoice.Name = "txtLargestInvoice";
+            this.txtLargestInvoice.ReadOnly = true;
+            this.txtLargestInvoice.Size = new System.Drawing.Size(100, 26);
+            this.txtLargestInvoice.TabIndex = 19;
+            this.txtLargestInvoice.TabStop = false;
+            // 
+            // labSmallestInvoice
+            // 
+            this.labSmallestInvoice.AutoSize = true;
+            this.labSmallestInvoice.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labSmallestInvoice.Location = new System.Drawing.Point(373, 301);
+            this.labSmallestInvoice.Name = "labSmallestInvoice";
+            this.labSmallestInvoice.Size = new System.Drawing.Size(128, 20);
+            this.labSmallestInvoice.TabIndex = 20;
+            this.labSmallestInvoice.Text = "Smallest Invoice:";
+            // 
+            // txtSmallestInvoice
+            // 
+            this.txtSmallestInvoice.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtSmallestInvoice.Location = new System.Drawing.Point(497, 295);
+            this.txtSmallestInvoice.Name = "txtSmallestInvoice";
+            this.txtSmallestInvoice.ReadOnly = true;
+            this.txtSmallestInvoice.Size = new System.Drawing.Size(100, 26);
+            this.txtSmallestInvoice.TabIndex = 21;
+            // 
             // InvoiceTotal
             // 
             this.AcceptButton = this.btnCalculate;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnExit;
-            this.ClientSize = new System.Drawing.Size(682, 375);
+            this.ClientSize = new System.Drawing.Size(711, 443);
+            this.Controls.Add(this.txtSmallestInvoice);
+            this.Controls.Add(this.labSmallestInvoice);
+            this.Controls.Add(this.txtLargestInvoice);
+            this.Controls.Add(this.labLargestInvoice);
             this.Controls.Add(this.txtEnterSubtotal);
             this.Controls.Add(this.labEnterSubtotal);
             this.Controls.Add(this.txtInvoiceAve);
@@ -326,6 +373,10 @@
         private System.Windows.Forms.TextBox txtInvoiceAve;
         private System.Windows.Forms.Label labEnterSubtotal;
         private System.Windows.Forms.TextBox txtEnterSubtotal;
+        private System.Windows.Forms.Label labLargestInvoice;
+        private System.Windows.Forms.TextBox txtLargestInvoice;
+        private System.Windows.Forms.Label labSmallestInvoice;
+        private System.Windows.Forms.TextBox txtSmallestInvoice;
     }
 }
 
