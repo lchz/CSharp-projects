@@ -20,6 +20,8 @@ namespace WindowsFormsApp2
         int numInvoices = 0;
         double totalInvoices = 0;
         double invoiceAve = 0;
+        double largestInvoice = 0;
+        double smallestInvoice = Double.MaxValue;
 
         private void btnCalculate_Click(object sender, EventArgs e)
         {
@@ -42,6 +44,12 @@ namespace WindowsFormsApp2
             txtNumInvoices.Text = numInvoices.ToString();
             txtTotalInvoices.Text = totalInvoices.ToString("c");
             txtInvoiceAve.Text = invoiceAve.ToString("c");
+
+            // Update largest, smallest invoice
+            largestInvoice = Math.Max(largestInvoice, total);
+            smallestInvoice = Math.Min(smallestInvoice, total);
+            txtLargestInvoice.Text = largestInvoice.ToString("c");
+            txtSmallestInvoice.Text = smallestInvoice.ToString("c");
 
             txtEnterSubtotal.Focus();
         }
