@@ -22,17 +22,64 @@ namespace WindowsFormsApp2
         double invoiceAve = 0;
         double largestInvoice = 0;
         double smallestInvoice = Double.MaxValue;
-
+        /// <summary>
+        /// Calculate-btn functions
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnCalculate_Click(object sender, EventArgs e)
         {
             // Calculate discount and total
             double subtotal = Convert.ToDouble(txtEnterSubtotal.Text);
-            double disPercent = Convert.ToDouble(txtDisPercent.Text) * 0.01;
+            string customerType = txtCustomerType.Text;
+            double disPercent = 0.1;
+
+            if (customerType == "R")
+            {
+                if (subtotal >= 250 && subtotal < 500)
+                {
+                    disPercent = 0.25;
+                }
+                else if (subtotal >= 500)
+                {
+                    disPercent = 0.3;
+                }
+            }
+            else if (customerType == "C")
+            {
+                disPercent = 0.2;
+            }
+            else if (customerType == "T")
+            {
+                if (subtotal < 500)
+                {
+                    disPercent = 0.4;
+                }
+                else
+                {
+                    disPercent = 0.5;
+                }
+            }
+
+            //// Example use of switch
+            //switch (customerType)
+            //{
+            //    case "R":
+            //        disPercent = 0.2;
+            //        break;
+            //    case "C":
+            //        disPercent = 0.3;
+            //        break;
+            //    default:
+            //        disPercent = 0.1;
+            //        break;
+            //}
 
             double disAmount = subtotal * disPercent;
             double total = subtotal - disAmount;
 
             txtSubtotal.Text = subtotal.ToString("c");
+            txtDisPercent.Text = disPercent.ToString("p1");
             txtDisAmount.Text = disAmount.ToString("c");
             txtTotal.Text = total.ToString("c");
 
