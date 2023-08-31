@@ -59,13 +59,15 @@
             this.txtNumInvoices = new System.Windows.Forms.TextBox();
             this.txtTotalInvoices = new System.Windows.Forms.TextBox();
             this.txtInvoiceAve = new System.Windows.Forms.TextBox();
+            this.labEnterSubtotal = new System.Windows.Forms.Label();
+            this.txtEnterSubtotal = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // labSubtotal
             // 
             this.labSubtotal.AutoSize = true;
             this.labSubtotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labSubtotal.Location = new System.Drawing.Point(40, 45);
+            this.labSubtotal.Location = new System.Drawing.Point(42, 81);
             this.labSubtotal.Name = "labSubtotal";
             this.labSubtotal.Size = new System.Drawing.Size(73, 20);
             this.labSubtotal.TabIndex = 0;
@@ -75,7 +77,7 @@
             // 
             this.labDisPercent.AutoSize = true;
             this.labDisPercent.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labDisPercent.Location = new System.Drawing.Point(40, 92);
+            this.labDisPercent.Location = new System.Drawing.Point(42, 128);
             this.labDisPercent.Name = "labDisPercent";
             this.labDisPercent.Size = new System.Drawing.Size(135, 20);
             this.labDisPercent.TabIndex = 1;
@@ -85,7 +87,7 @@
             // 
             this.labDisAmount.AutoSize = true;
             this.labDisAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labDisAmount.Location = new System.Drawing.Point(40, 140);
+            this.labDisAmount.Location = new System.Drawing.Point(42, 176);
             this.labDisAmount.Name = "labDisAmount";
             this.labDisAmount.Size = new System.Drawing.Size(136, 20);
             this.labDisAmount.TabIndex = 2;
@@ -95,7 +97,7 @@
             // 
             this.labTotal.AutoSize = true;
             this.labTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labTotal.Location = new System.Drawing.Point(40, 193);
+            this.labTotal.Location = new System.Drawing.Point(42, 229);
             this.labTotal.Name = "labTotal";
             this.labTotal.Size = new System.Drawing.Size(48, 20);
             this.labTotal.TabIndex = 3;
@@ -104,16 +106,17 @@
             // txtSubtotal
             // 
             this.txtSubtotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtSubtotal.Location = new System.Drawing.Point(184, 45);
+            this.txtSubtotal.Location = new System.Drawing.Point(186, 81);
             this.txtSubtotal.Name = "txtSubtotal";
+            this.txtSubtotal.ReadOnly = true;
             this.txtSubtotal.Size = new System.Drawing.Size(100, 26);
             this.txtSubtotal.TabIndex = 4;
-            this.txtSubtotal.Text = "Enter Price";
+            this.txtSubtotal.TabStop = false;
             // 
             // txtDisPercent
             // 
             this.txtDisPercent.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtDisPercent.Location = new System.Drawing.Point(184, 92);
+            this.txtDisPercent.Location = new System.Drawing.Point(186, 128);
             this.txtDisPercent.Name = "txtDisPercent";
             this.txtDisPercent.ReadOnly = true;
             this.txtDisPercent.Size = new System.Drawing.Size(48, 26);
@@ -124,25 +127,29 @@
             // txtDisAmount
             // 
             this.txtDisAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtDisAmount.Location = new System.Drawing.Point(184, 140);
+            this.txtDisAmount.Location = new System.Drawing.Point(186, 176);
             this.txtDisAmount.Name = "txtDisAmount";
+            this.txtDisAmount.ReadOnly = true;
             this.txtDisAmount.Size = new System.Drawing.Size(100, 26);
             this.txtDisAmount.TabIndex = 6;
+            this.txtDisAmount.TabStop = false;
             // 
             // txtTotal
             // 
             this.txtTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtTotal.Location = new System.Drawing.Point(184, 193);
+            this.txtTotal.Location = new System.Drawing.Point(186, 229);
             this.txtTotal.Name = "txtTotal";
+            this.txtTotal.ReadOnly = true;
             this.txtTotal.Size = new System.Drawing.Size(100, 26);
             this.txtTotal.TabIndex = 7;
+            this.txtTotal.TabStop = false;
             // 
             // btnCalculate
             // 
             this.btnCalculate.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.btnCalculate.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.btnCalculate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnCalculate.Location = new System.Drawing.Point(142, 265);
+            this.btnCalculate.Location = new System.Drawing.Point(142, 297);
             this.btnCalculate.Name = "btnCalculate";
             this.btnCalculate.Size = new System.Drawing.Size(90, 30);
             this.btnCalculate.TabIndex = 8;
@@ -154,10 +161,10 @@
             // 
             this.btnExit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnExit.Location = new System.Drawing.Point(517, 265);
+            this.btnExit.Location = new System.Drawing.Point(517, 297);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(90, 30);
-            this.btnExit.TabIndex = 9;
+            this.btnExit.TabIndex = 11;
             this.btnExit.Text = "E&xit";
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
@@ -166,7 +173,7 @@
             // 
             this.labPercentMark.AutoSize = true;
             this.labPercentMark.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labPercentMark.Location = new System.Drawing.Point(233, 95);
+            this.labPercentMark.Location = new System.Drawing.Point(235, 131);
             this.labPercentMark.Name = "labPercentMark";
             this.labPercentMark.Size = new System.Drawing.Size(23, 20);
             this.labPercentMark.TabIndex = 10;
@@ -175,10 +182,10 @@
             // btnClearTotals
             // 
             this.btnClearTotals.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnClearTotals.Location = new System.Drawing.Point(322, 265);
+            this.btnClearTotals.Location = new System.Drawing.Point(320, 297);
             this.btnClearTotals.Name = "btnClearTotals";
             this.btnClearTotals.Size = new System.Drawing.Size(111, 30);
-            this.btnClearTotals.TabIndex = 11;
+            this.btnClearTotals.TabIndex = 9;
             this.btnClearTotals.Text = "Clear Totals";
             this.btnClearTotals.UseVisualStyleBackColor = true;
             // 
@@ -186,7 +193,7 @@
             // 
             this.labNumInvoices.AutoSize = true;
             this.labNumInvoices.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labNumInvoices.Location = new System.Drawing.Point(362, 98);
+            this.labNumInvoices.Location = new System.Drawing.Point(373, 87);
             this.labNumInvoices.Name = "labNumInvoices";
             this.labNumInvoices.Size = new System.Drawing.Size(147, 20);
             this.labNumInvoices.TabIndex = 12;
@@ -196,7 +203,7 @@
             // 
             this.labTotalInvoices.AutoSize = true;
             this.labTotalInvoices.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labTotalInvoices.Location = new System.Drawing.Point(362, 146);
+            this.labTotalInvoices.Location = new System.Drawing.Point(373, 135);
             this.labTotalInvoices.Name = "labTotalInvoices";
             this.labTotalInvoices.Size = new System.Drawing.Size(126, 20);
             this.labTotalInvoices.TabIndex = 13;
@@ -206,7 +213,7 @@
             // 
             this.labInvoiceAve.AutoSize = true;
             this.labInvoiceAve.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labInvoiceAve.Location = new System.Drawing.Point(362, 199);
+            this.labInvoiceAve.Location = new System.Drawing.Point(373, 188);
             this.labInvoiceAve.Name = "labInvoiceAve";
             this.labInvoiceAve.Size = new System.Drawing.Size(124, 20);
             this.labInvoiceAve.TabIndex = 14;
@@ -215,26 +222,50 @@
             // txtNumInvoices
             // 
             this.txtNumInvoices.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtNumInvoices.Location = new System.Drawing.Point(507, 97);
+            this.txtNumInvoices.Location = new System.Drawing.Point(518, 86);
             this.txtNumInvoices.Name = "txtNumInvoices";
+            this.txtNumInvoices.ReadOnly = true;
             this.txtNumInvoices.Size = new System.Drawing.Size(100, 26);
             this.txtNumInvoices.TabIndex = 15;
+            this.txtNumInvoices.TabStop = false;
             // 
             // txtTotalInvoices
             // 
             this.txtTotalInvoices.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtTotalInvoices.Location = new System.Drawing.Point(507, 145);
+            this.txtTotalInvoices.Location = new System.Drawing.Point(518, 134);
             this.txtTotalInvoices.Name = "txtTotalInvoices";
+            this.txtTotalInvoices.ReadOnly = true;
             this.txtTotalInvoices.Size = new System.Drawing.Size(100, 26);
             this.txtTotalInvoices.TabIndex = 16;
+            this.txtTotalInvoices.TabStop = false;
             // 
             // txtInvoiceAve
             // 
             this.txtInvoiceAve.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txtInvoiceAve.Location = new System.Drawing.Point(507, 198);
+            this.txtInvoiceAve.Location = new System.Drawing.Point(518, 187);
             this.txtInvoiceAve.Name = "txtInvoiceAve";
+            this.txtInvoiceAve.ReadOnly = true;
             this.txtInvoiceAve.Size = new System.Drawing.Size(100, 26);
             this.txtInvoiceAve.TabIndex = 17;
+            this.txtInvoiceAve.TabStop = false;
+            // 
+            // labEnterSubtotal
+            // 
+            this.labEnterSubtotal.AutoSize = true;
+            this.labEnterSubtotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labEnterSubtotal.Location = new System.Drawing.Point(42, 31);
+            this.labEnterSubtotal.Name = "labEnterSubtotal";
+            this.labEnterSubtotal.Size = new System.Drawing.Size(116, 20);
+            this.labEnterSubtotal.TabIndex = 0;
+            this.labEnterSubtotal.Text = "Enter Subtotal:";
+            // 
+            // txtEnterSubtotal
+            // 
+            this.txtEnterSubtotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txtEnterSubtotal.Location = new System.Drawing.Point(186, 30);
+            this.txtEnterSubtotal.Name = "txtEnterSubtotal";
+            this.txtEnterSubtotal.Size = new System.Drawing.Size(100, 26);
+            this.txtEnterSubtotal.TabIndex = 1;
             // 
             // InvoiceTotal
             // 
@@ -242,7 +273,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnExit;
-            this.ClientSize = new System.Drawing.Size(671, 341);
+            this.ClientSize = new System.Drawing.Size(682, 375);
+            this.Controls.Add(this.txtEnterSubtotal);
+            this.Controls.Add(this.labEnterSubtotal);
             this.Controls.Add(this.txtInvoiceAve);
             this.Controls.Add(this.txtTotalInvoices);
             this.Controls.Add(this.txtNumInvoices);
@@ -261,6 +294,7 @@
             this.Controls.Add(this.labDisAmount);
             this.Controls.Add(this.labDisPercent);
             this.Controls.Add(this.labSubtotal);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Name = "InvoiceTotal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Invoice Total";
@@ -289,6 +323,8 @@
         private System.Windows.Forms.TextBox txtNumInvoices;
         private System.Windows.Forms.TextBox txtTotalInvoices;
         private System.Windows.Forms.TextBox txtInvoiceAve;
+        private System.Windows.Forms.Label labEnterSubtotal;
+        private System.Windows.Forms.TextBox txtEnterSubtotal;
     }
 }
 

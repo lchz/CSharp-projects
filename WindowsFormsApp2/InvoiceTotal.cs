@@ -17,8 +17,13 @@ namespace WindowsFormsApp2
             InitializeComponent();
         }
 
+        int numInvoices = 0;
+        double totalInvoices = 0;
+        double invoiceAve = 0;
+
         private void btnCalculate_Click(object sender, EventArgs e)
         {
+            // Calculate discount and total
             double subtotal = Convert.ToDouble(txtSubtotal.Text);
             double disPercent = Convert.ToDouble(txtDisPercent.Text) * 0.01;
 
@@ -27,6 +32,14 @@ namespace WindowsFormsApp2
 
             txtDisAmount.Text = disAmount.ToString();
             txtTotal.Text = total.ToString();
+
+            // Update number, total and ave of invoices
+            numInvoices++;
+            totalInvoices += total;
+            invoiceAve = totalInvoices / numInvoices;
+
+            txtNumInvoices.Text = numInvoices.ToString();
+            txtTotalInvoices.Text = totalInvoices.ToString();
 
             txtSubtotal.Focus();
         }
