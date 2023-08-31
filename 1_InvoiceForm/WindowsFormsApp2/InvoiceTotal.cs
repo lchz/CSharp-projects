@@ -17,6 +17,11 @@ namespace WindowsFormsApp2
             InitializeComponent();
         }
 
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
         int numInvoices = 0;
         double totalInvoices = 0;
         double invoiceAve = 0;
@@ -29,8 +34,42 @@ namespace WindowsFormsApp2
         /// <param name="e"></param>
         private void btnCalculate_Click(object sender, EventArgs e)
         {
-            // Calculate discount and total
-            double subtotal = Convert.ToDouble(txtEnterSubtotal.Text);
+            // Check if Subtotal is empty
+            if (txtEnterSubtotal.Text == "")
+            {
+                MessageBox.Show(
+                    "Subtotal is required.",
+                    "Entry Error");
+                txtEnterSubtotal.Focus();
+                return;
+            }
+
+            // Subtotal format check
+            double subtotal = 0;
+            try
+            {
+                subtotal = Convert.ToDouble(txtEnterSubtotal.Text);
+            }
+            catch (FormatException fe)
+            {
+                MessageBox.Show(
+                    "Please enter a valid number for the Subtotal field.",
+                    "Entry Error");
+
+                txtEnterSubtotal.Focus();
+                return; // Not execute the rest if subtotal is not assigned a value.
+            }
+
+            // Subtotal range check
+            if (subtotal <= 0 || subtotal >= 10000)
+            {
+                MessageBox.Show(
+                    "The subtotal should greater than 0 and less than 10,000.",
+                    "Entry Error");
+                txtEnterSubtotal.Focus();
+                return;
+            }
+
             string customerType = txtCustomerType.Text;
             double disPercent = 0.1;
 
@@ -101,12 +140,9 @@ namespace WindowsFormsApp2
             txtEnterSubtotal.Focus();
         }
 
-        private void btnExit_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+
         /// <summary>
-        /// Clear the increament of the invoices.
+        /// Clear the count of the invoices.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
