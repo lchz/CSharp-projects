@@ -24,14 +24,15 @@ namespace WindowsFormsApp2
         private void btnCalculate_Click(object sender, EventArgs e)
         {
             // Calculate discount and total
-            double subtotal = Convert.ToDouble(txtSubtotal.Text);
+            double subtotal = Convert.ToDouble(txtEnterSubtotal.Text);
             double disPercent = Convert.ToDouble(txtDisPercent.Text) * 0.01;
 
             double disAmount = subtotal * disPercent;
             double total = subtotal - disAmount;
 
-            txtDisAmount.Text = disAmount.ToString();
-            txtTotal.Text = total.ToString();
+            txtSubtotal.Text = subtotal.ToString("c");
+            txtDisAmount.Text = disAmount.ToString("f2");
+            txtTotal.Text = total.ToString("f2");
 
             // Update number, total and ave of invoices
             numInvoices++;
@@ -39,9 +40,10 @@ namespace WindowsFormsApp2
             invoiceAve = totalInvoices / numInvoices;
 
             txtNumInvoices.Text = numInvoices.ToString();
-            txtTotalInvoices.Text = totalInvoices.ToString();
+            txtTotalInvoices.Text = totalInvoices.ToString("f2");
+            txtInvoiceAve.Text = invoiceAve.ToString("f2");
 
-            txtSubtotal.Focus();
+            txtEnterSubtotal.Focus();
         }
 
         private void btnExit_Click(object sender, EventArgs e)
