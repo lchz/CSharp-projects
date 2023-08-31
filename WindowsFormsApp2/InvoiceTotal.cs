@@ -31,8 +31,8 @@ namespace WindowsFormsApp2
             double total = subtotal - disAmount;
 
             txtSubtotal.Text = subtotal.ToString("c");
-            txtDisAmount.Text = disAmount.ToString("f2");
-            txtTotal.Text = total.ToString("f2");
+            txtDisAmount.Text = disAmount.ToString("c");
+            txtTotal.Text = total.ToString("c");
 
             // Update number, total and ave of invoices
             numInvoices++;
@@ -40,8 +40,8 @@ namespace WindowsFormsApp2
             invoiceAve = totalInvoices / numInvoices;
 
             txtNumInvoices.Text = numInvoices.ToString();
-            txtTotalInvoices.Text = totalInvoices.ToString("f2");
-            txtInvoiceAve.Text = invoiceAve.ToString("f2");
+            txtTotalInvoices.Text = totalInvoices.ToString("c");
+            txtInvoiceAve.Text = invoiceAve.ToString("c");
 
             txtEnterSubtotal.Focus();
         }
@@ -50,7 +50,23 @@ namespace WindowsFormsApp2
         {
             this.Close();
         }
+        /// <summary>
+        /// Clear the increament of the invoices.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnClearTotals_Click(object sender, EventArgs e)
+        {
+            numInvoices = 0;
+            totalInvoices = 0;
+            invoiceAve = 0;
 
+            txtNumInvoices.Text = "";
+            txtTotalInvoices.Text = "";
+            txtInvoiceAve.Text = "";
 
+            txtEnterSubtotal.Focus();
+
+        }
     }
 }

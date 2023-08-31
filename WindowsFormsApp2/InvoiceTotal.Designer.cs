@@ -188,6 +188,7 @@
             this.btnClearTotals.TabIndex = 9;
             this.btnClearTotals.Text = "Clear Totals";
             this.btnClearTotals.UseVisualStyleBackColor = true;
+            this.btnClearTotals.Click += new System.EventHandler(this.btnClearTotals_Click);
             // 
             // labNumInvoices
             // 
