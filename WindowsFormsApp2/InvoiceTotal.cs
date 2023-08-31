@@ -35,5 +35,7 @@ namespace WindowsFormsApp2
         {
             this.Close();
         }
+
+
     }
 }
