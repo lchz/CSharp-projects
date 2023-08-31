@@ -62,5 +62,24 @@ namespace FutureValue
         {
             txtFutureValue.Text = "";
         }
+
+        /// <summary>
+        /// Clear all boxes when the form is double-clicked.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void FutureValueForm_DoubleClick(object sender, EventArgs e)
+        {
+            txtMonInvestment.Text = "";
+            txtYearlyInterestRate.Text = "";
+            txtNumYears.Text = "";
+            txtFutureValue.Text = "";
+
+        }
+
+        private void txtYearlyInterestRate_DoubleClick(object sender, EventArgs e)
+        {
+            txtYearlyInterestRate.Text = Convert.ToString(12);
+        }
     }
 }
