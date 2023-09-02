@@ -17,7 +17,11 @@ namespace FutureValue
         {
             InitializeComponent();
         }
-
+        /// <summary>
+        /// Close app with Exit -btn
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -43,7 +47,7 @@ namespace FutureValue
             }
             
 
-            // Check any other possible excdeptions
+            // Check any other possible exceptions
             try
             {
                 monthlyInvestment = Convert.ToDouble(txtMonInvestment.Text);
@@ -66,17 +70,6 @@ namespace FutureValue
             txtMonInvestment.Focus();
         }
 
-        private static double CalculateFutureValue(double monthlyInvestment, int years, double monInterestRate)
-        {
-            double futureValue = 0;
-
-            for (int i = 0; i < years * 12; i++)
-            {
-                futureValue = (futureValue + monthlyInvestment) * (1 + monInterestRate);
-            }
-
-            return futureValue;
-        }
 
         /// <summary>
         /// Clear content of Future Value when the three boxes change.
@@ -102,9 +95,38 @@ namespace FutureValue
 
         }
 
+        /// <summary>
+        /// Automatically fill in 12 when "Yearly Interest Rate" -box double-clicked.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txtYearlyInterestRate_DoubleClick(object sender, EventArgs e)
         {
             txtYearlyInterestRate.Text = Convert.ToString(12);
+        }
+
+
+        /*
+         *********** HELP FUNCTIONS ***************
+         */
+
+        /// <summary>
+        /// Calculate future value
+        /// </summary>
+        /// <param name="monthlyInvestment"></param>
+        /// <param name="years"></param>
+        /// <param name="monInterestRate"></param>
+        /// <returns></returns>
+        private static double CalculateFutureValue(double monthlyInvestment, int years, double monInterestRate)
+        {
+            double futureValue = 0;
+
+            for (int i = 0; i < years * 12; i++)
+            {
+                futureValue = (futureValue + monthlyInvestment) * (1 + monInterestRate);
+            }
+
+            return futureValue;
         }
 
         /// <summary>
