@@ -31,7 +31,7 @@ namespace _3_DataHandling
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnOK_Click(object sender, EventArgs e)
+        private void btnCalculateDays_Click(object sender, EventArgs e)
         {
             DateTime futureDate = DateTime.Parse(txtFutureDate.Text);
             DateTime today = DateTime.Parse(strCurrentDate.Text);
@@ -47,6 +47,30 @@ namespace _3_DataHandling
         private void txtFutureDate_TextChanged(object sender, EventArgs e)
         {
             strDaysUntilDue.Text = "";
+        }
+
+        /// <summary>
+        /// Calculate age
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnCalculateAge_Click(object sender, EventArgs e)
+        {
+            DateTime currentDate = DateTime.Parse(strCurrentDate.Text);
+            DateTime birthday = DateTime.Parse(txtBirthday.Text);
+
+            int age = currentDate.Year - birthday.Year;
+            if (currentDate.Month < birthday.Month 
+                || (currentDate.Month == birthday.Month && currentDate.Day < birthday.Day))
+            {
+                age--; // Because not yet birthday in that year.
+            }
+
+            MessageBox.Show(
+                $"{"Current date:",-17}{currentDate:D}\n\n" +
+                $"{"Birth date:",-19}{birthday:D}\n\n" +
+                $"{"Age:",-22}{age}",
+                "Age Calculation");
         }
     }
 }

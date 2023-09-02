@@ -32,9 +32,12 @@
             this.labFutureDate = new System.Windows.Forms.Label();
             this.labDaysUntilDue = new System.Windows.Forms.Label();
             this.txtFutureDate = new System.Windows.Forms.TextBox();
-            this.btnOK = new System.Windows.Forms.Button();
+            this.btnCalculateDays = new System.Windows.Forms.Button();
             this.strCurrentDate = new System.Windows.Forms.Label();
             this.strDaysUntilDue = new System.Windows.Forms.Label();
+            this.btnCalculateAge = new System.Windows.Forms.Button();
+            this.labBirthday = new System.Windows.Forms.Label();
+            this.txtBirthday = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // labCurrentDate
@@ -75,15 +78,15 @@
             this.txtFutureDate.TabIndex = 0;
             this.txtFutureDate.TextChanged += new System.EventHandler(this.txtFutureDate_TextChanged);
             // 
-            // btnOK
+            // btnCalculateDays
             // 
-            this.btnOK.Location = new System.Drawing.Point(202, 245);
-            this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(83, 36);
-            this.btnOK.TabIndex = 6;
-            this.btnOK.Text = "OK";
-            this.btnOK.UseVisualStyleBackColor = true;
-            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
+            this.btnCalculateDays.Location = new System.Drawing.Point(59, 298);
+            this.btnCalculateDays.Name = "btnCalculateDays";
+            this.btnCalculateDays.Size = new System.Drawing.Size(134, 36);
+            this.btnCalculateDays.TabIndex = 6;
+            this.btnCalculateDays.Text = "Calculate Days";
+            this.btnCalculateDays.UseVisualStyleBackColor = true;
+            this.btnCalculateDays.Click += new System.EventHandler(this.btnCalculateDays_Click);
             // 
             // strCurrentDate
             // 
@@ -102,15 +105,44 @@
             this.strDaysUntilDue.Size = new System.Drawing.Size(0, 20);
             this.strDaysUntilDue.TabIndex = 8;
             // 
+            // btnCalculateAge
+            // 
+            this.btnCalculateAge.Location = new System.Drawing.Point(237, 298);
+            this.btnCalculateAge.Name = "btnCalculateAge";
+            this.btnCalculateAge.Size = new System.Drawing.Size(139, 36);
+            this.btnCalculateAge.TabIndex = 9;
+            this.btnCalculateAge.Text = "Calculate Age";
+            this.btnCalculateAge.UseVisualStyleBackColor = true;
+            this.btnCalculateAge.Click += new System.EventHandler(this.btnCalculateAge_Click);
+            // 
+            // labBirthday
+            // 
+            this.labBirthday.AutoSize = true;
+            this.labBirthday.Location = new System.Drawing.Point(20, 230);
+            this.labBirthday.Name = "labBirthday";
+            this.labBirthday.Size = new System.Drawing.Size(71, 20);
+            this.labBirthday.TabIndex = 10;
+            this.labBirthday.Text = "Birthday:";
+            // 
+            // txtBirthday
+            // 
+            this.txtBirthday.Location = new System.Drawing.Point(169, 230);
+            this.txtBirthday.Name = "txtBirthday";
+            this.txtBirthday.Size = new System.Drawing.Size(100, 26);
+            this.txtBirthday.TabIndex = 11;
+            // 
             // DataHandlingForm
             // 
-            this.AcceptButton = this.btnOK;
+            this.AcceptButton = this.btnCalculateDays;
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(308, 309);
+            this.ClientSize = new System.Drawing.Size(417, 394);
+            this.Controls.Add(this.txtBirthday);
+            this.Controls.Add(this.labBirthday);
+            this.Controls.Add(this.btnCalculateAge);
             this.Controls.Add(this.strDaysUntilDue);
             this.Controls.Add(this.strCurrentDate);
-            this.Controls.Add(this.btnOK);
+            this.Controls.Add(this.btnCalculateDays);
             this.Controls.Add(this.txtFutureDate);
             this.Controls.Add(this.labDaysUntilDue);
             this.Controls.Add(this.labFutureDate);
@@ -132,9 +164,12 @@
         private System.Windows.Forms.Label labFutureDate;
         private System.Windows.Forms.Label labDaysUntilDue;
         private System.Windows.Forms.TextBox txtFutureDate;
-        private System.Windows.Forms.Button btnOK;
+        private System.Windows.Forms.Button btnCalculateDays;
         private System.Windows.Forms.Label strCurrentDate;
         private System.Windows.Forms.Label strDaysUntilDue;
+        private System.Windows.Forms.Button btnCalculateAge;
+        private System.Windows.Forms.Label labBirthday;
+        private System.Windows.Forms.TextBox txtBirthday;
     }
 }
 
