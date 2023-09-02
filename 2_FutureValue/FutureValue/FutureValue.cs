@@ -17,6 +17,11 @@ namespace FutureValue
         {
             InitializeComponent();
         }
+
+        string[,] valueTable = new string[10, 4];
+        int rowIndex = 0;
+
+
         /// <summary>
         /// Close app with Exit -btn
         /// </summary>
@@ -24,6 +29,17 @@ namespace FutureValue
         /// <param name="e"></param>
         private void btnExit_Click(object sender, EventArgs e)
         {
+            string output = "Inv/Mo.\tRate\tYears\tFuture Value\n";
+            for (int i = 0; i < valueTable.GetLength(0); i++)
+            {
+                for (int j = 0; j < valueTable.GetLength(1); j++)
+                {
+                    output += valueTable[i, j] + "\t";
+                }
+                output += "\n";
+            }
+            MessageBox.Show(output, "Future Value Calculations");
+
             this.Close();
         }
 
@@ -45,7 +61,6 @@ namespace FutureValue
             {
                 return;
             }
-            
 
             // Check any other possible exceptions
             try
@@ -61,11 +76,21 @@ namespace FutureValue
                 return;
             }
 
-
+            // Calculate Future Value
             double monInterestRate = yearlyInterestRate / 12 / 100;
             double futureValue = CalculateFutureValue(monthlyInvestment, years, monInterestRate);
-
             txtFutureValue.Text = futureValue.ToString("c");
+
+            // Store in table
+            if (rowIndex < valueTable.GetLength(0))
+            {
+                valueTable[rowIndex, 0] = monthlyInvestment.ToString("c");
+                valueTable[rowIndex, 1] = (monInterestRate*12).ToString("p1");
+                valueTable[rowIndex, 2] = years.ToString();
+                valueTable[rowIndex, 3] = futureValue.ToString("c");
+                rowIndex++;
+            }
+            
 
             txtMonInvestment.Focus();
         }
