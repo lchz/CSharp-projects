@@ -8,6 +8,8 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Globalization;
+//using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace FutureValue
 {
@@ -55,23 +57,28 @@ namespace FutureValue
             int years;
 
             // Check inputs validity
-            if (!(IsValidData(txtMonInvestment, "Monthly Investment", 10, 2000)
+            if (!(IsValidData(txtMonInvestment, "Monthly Investment", 10, 1000000)
                 && IsValidData(txtYearlyInterestRate, "Yearly Interest Rate", 1, 200)
                 && IsValidData(txtNumYears, "Number of Years", 1, 20, false)))
             {
                 return;
             }
 
-            // Check any other possible exceptions
+            // Convert input values and check any other possible exceptions
             try
             {
-                monthlyInvestment = Convert.ToDouble(txtMonInvestment.Text);
-                yearlyInterestRate = Convert.ToDouble(txtYearlyInterestRate.Text);
-                years = Convert.ToInt32(txtNumYears.Text);
+                monthlyInvestment = Double.Parse(txtMonInvestment.Text, NumberStyles.Number | NumberStyles.AllowCurrencySymbol | NumberStyles.AllowParentheses,
+                                                    CultureInfo.CurrentCulture);
+
+                yearlyInterestRate = Double.Parse(txtYearlyInterestRate.Text, NumberStyles.Number | NumberStyles.AllowCurrencySymbol | NumberStyles.AllowParentheses,
+                                                    CultureInfo.CurrentCulture);
+
+                years = Int32.Parse(txtNumYears.Text, NumberStyles.None, CultureInfo.CurrentCulture);
+
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Exception Error");
+                MessageBox.Show(ex.Message + ex.ToString(), "Exception Error");
                 txtMonInvestment.Focus();
                 return;
             }
@@ -80,6 +87,8 @@ namespace FutureValue
             double monInterestRate = yearlyInterestRate / 12 / 100;
             double futureValue = CalculateFutureValue(monthlyInvestment, years, monInterestRate);
             txtFutureValue.Text = futureValue.ToString("c");
+            txtYearlyInterestRate.Text = (monInterestRate * 12).ToString("p2");
+            txtMonInvestment.Text = monthlyInvestment.ToString("c");
 
             // Store in table
             if (rowIndex < valueTable.GetLength(0))
@@ -163,7 +172,7 @@ namespace FutureValue
             if (isDoubleValue)
             {
                 if (IsPresent(txtbox, txtName)
-                    && IsDouble(txtbox, txtName)
+                    && IsCurrency(txtbox, txtName)
                     && IsWithinRange(txtbox, txtName, minValue, maxValue))
                 {
                     return true;
@@ -200,14 +209,15 @@ namespace FutureValue
             return true;
         }
         /// <summary>
-        /// Check if input format is Double
+        /// Check if input format is Double, allowing numbers and all numeric styles except for $-sign and parentheses.
         /// </summary>
         /// <param name="txtBox"></param>
         /// <param name="txtName"></param>
         /// <returns></returns>
         private bool IsDouble(TextBox txtBox, string txtName)
         {
-            if (!Double.TryParse(txtBox.Text, out double d))
+            if (!Double.TryParse(txtBox.Text, NumberStyles.Number, 
+                                 CultureInfo.CurrentCulture, out double d))
             {
                 MessageBox.Show(txtName + " requires a decimal value.", "Format Error");
                 txtBox.Focus();
@@ -216,14 +226,32 @@ namespace FutureValue
             return true;
         }
         /// <summary>
-        /// Check if input format is integer
+        /// Allows numbers and all numeric styles
+        /// </summary>
+        /// <param name="txtBox"></param>
+        /// <param name="txtName"></param>
+        /// <returns></returns>
+        private bool IsCurrency(TextBox txtBox, string txtName)
+        {
+            if (!Double.TryParse(txtBox.Text, NumberStyles.Number | NumberStyles.AllowCurrencySymbol | NumberStyles.AllowParentheses,
+                                 CultureInfo.CurrentCulture, out double d))
+            {
+                MessageBox.Show(txtName + " requires a decimal value.", "Format Error");
+                txtBox.Focus();
+                return false;
+            }
+            return true;
+        }
+        /// <summary>
+        /// Check if input format is integer, only digits allowed.
         /// </summary>
         /// <param name="txtBox"></param>
         /// <param name="txtName"></param>
         /// <returns></returns>
         private bool IsInt32(TextBox txtBox, string txtName)
         {
-            if (!Int32.TryParse(txtBox.Text, out int i))
+            if (!Int32.TryParse(txtBox.Text, NumberStyles.None,
+                                CultureInfo.CurrentCulture, out int i))
             {
                 MessageBox.Show(txtName + " requires an integer value.", "Format Error");
                 txtBox.Focus();
@@ -241,7 +269,9 @@ namespace FutureValue
         /// <returns></returns>
         private bool IsWithinRange(TextBox txtBox, string txtName, double minValue, double MaxValue)
         {
-            double inputValue = Convert.ToDouble(txtBox.Text);
+            double inputValue = Double.Parse(txtBox.Text, 
+                                            NumberStyles.Number | NumberStyles.AllowCurrencySymbol | NumberStyles.AllowParentheses,
+                                            CultureInfo.CurrentCulture);
             if (minValue > inputValue || MaxValue < inputValue)
             {
                 MessageBox.Show(txtName + " is not in a valid range.", "Range Error");
