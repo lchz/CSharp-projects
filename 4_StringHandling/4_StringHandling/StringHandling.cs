@@ -55,5 +55,35 @@ namespace _4_StringHandling
                     "Parse Name");
             }
         }
+
+        private void btnEditPhoneNumber_Click(object sender, EventArgs e)
+        {
+            string enteredNum = txtPhoneNumber.Text;
+            string onlyDigits = "";
+            // Find and remove special characters
+            for (int i = 0; i < enteredNum.Length; i++)
+            {
+                if (int.TryParse(enteredNum[i].ToString(), out int o))
+                {
+                    onlyDigits += o.ToString();
+                }
+            }
+            // Check if 10 digits after being formatted
+            if (onlyDigits.Length < 10)
+            {
+                MessageBox.Show("Not a valid phone number", "Phone Number Error");
+                txtPhoneNumber.Focus();
+                return;
+            }
+
+            string standardFormat = onlyDigits.Insert(3, "-");
+            standardFormat = standardFormat.Insert(7, "-");
+
+            MessageBox.Show(
+                $"{"Entered:",-32}{enteredNum}\n" +
+                $"{"Digits only:",-30}{onlyDigits}\n" +
+                $"{"Standard format:",-25}{standardFormat}",
+                "Edit Phone Number");
+        }
     }
 }

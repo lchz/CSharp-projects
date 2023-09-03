@@ -63,6 +63,7 @@
             this.btnEditPhoneNumber.TabIndex = 4;
             this.btnEditPhoneNumber.Text = "Edit Phone Number";
             this.btnEditPhoneNumber.UseVisualStyleBackColor = true;
+            this.btnEditPhoneNumber.Click += new System.EventHandler(this.btnEditPhoneNumber_Click);
             // 
             // labPhoneNumber
             // 
