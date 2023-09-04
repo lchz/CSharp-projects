@@ -9,7 +9,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Globalization;
-//using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace FutureValue
 {
@@ -22,6 +21,20 @@ namespace FutureValue
 
         string[,] valueTable = new string[10, 4];
         int rowIndex = 0;
+
+        private void FutureValueForm_Load(object sender, EventArgs e)
+        {
+            LoadNumberOfYears();
+        }
+
+        private void LoadNumberOfYears()
+        {
+            for (int i = 1; i < 21; i++)
+            {
+                cboNumberOfYears.Items.Add(i.ToString());
+            }
+            cboNumberOfYears.SelectedItem = "3";
+        }
 
 
         /// <summary>
@@ -58,8 +71,7 @@ namespace FutureValue
 
             // Check inputs validity
             if (!(IsValidData(txtMonInvestment, "Monthly Investment", 10, 1000000)
-                && IsValidData(txtYearlyInterestRate, "Yearly Interest Rate", 1, 200)
-                && IsValidData(txtNumYears, "Number of Years", 1, 20, false)))
+                && IsValidData(txtYearlyInterestRate, "Yearly Interest Rate", 1, 200)))
             {
                 return;
             }
@@ -73,8 +85,7 @@ namespace FutureValue
                 yearlyInterestRate = Double.Parse(txtYearlyInterestRate.Text, NumberStyles.Number | NumberStyles.AllowCurrencySymbol | NumberStyles.AllowParentheses,
                                                     CultureInfo.CurrentCulture);
 
-                years = Int32.Parse(txtNumYears.Text, NumberStyles.None, CultureInfo.CurrentCulture);
-
+                years = Convert.ToInt32(cboNumberOfYears.Text);
             }
             catch (Exception ex)
             {
@@ -83,25 +94,35 @@ namespace FutureValue
                 return;
             }
 
-            // Calculate Future Value
-            double monInterestRate = yearlyInterestRate / 12 / 100;
-            double futureValue = CalculateFutureValue(monthlyInvestment, years, monInterestRate);
-            txtFutureValue.Text = futureValue.ToString("c");
-            txtYearlyInterestRate.Text = (monInterestRate * 12).ToString("p2");
+            txtYearlyInterestRate.Text = (yearlyInterestRate / 100).ToString("p2");
             txtMonInvestment.Text = monthlyInvestment.ToString("c");
 
+            // Calculate Future Value
+            List<double> futureValues = CalculateFutureValue(monthlyInvestment, years, yearlyInterestRate);
+            lstFutureValue.Items.Clear();
+            for (int i = 0; i < futureValues.Count; i++)
+            {
+                lstFutureValue.Items.Add($"Year {i + 1}: {futureValues[i]:c}");
+            }
+
+
             // Store in table
+            StoreData(monthlyInvestment, yearlyInterestRate, years, futureValues);
+
+            txtMonInvestment.Focus();
+        }
+
+        private void StoreData(double monthlyInvestment, double yearlyInterestRate, int years, List<double> futureValues)
+        {
             if (rowIndex < valueTable.GetLength(0))
             {
                 valueTable[rowIndex, 0] = monthlyInvestment.ToString("c");
-                valueTable[rowIndex, 1] = (monInterestRate*12).ToString("p1");
+                valueTable[rowIndex, 1] = (yearlyInterestRate / 100).ToString("p1");
                 valueTable[rowIndex, 2] = years.ToString();
-                valueTable[rowIndex, 3] = futureValue.ToString("c");
+                valueTable[rowIndex, 3] = futureValues.Last().ToString("c");
+
                 rowIndex++;
             }
-            
-
-            txtMonInvestment.Focus();
         }
 
 
@@ -112,7 +133,9 @@ namespace FutureValue
         /// <param name="e"></param>
         private void ClearFutureValue(object sender, EventArgs e)
         {
-            txtFutureValue.Text = "";
+            //MessageBox.Show("Clear value");
+            //lstFutureValue.Text = "";
+            lstFutureValue.Items.Clear();
         }
 
         /// <summary>
@@ -124,8 +147,8 @@ namespace FutureValue
         {
             txtMonInvestment.Text = "";
             txtYearlyInterestRate.Text = "";
-            txtNumYears.Text = "";
-            txtFutureValue.Text = "";
+            cboNumberOfYears.SelectedItem = "3";
+            lstFutureValue.Text = "";
 
         }
 
@@ -151,16 +174,22 @@ namespace FutureValue
         /// <param name="years"></param>
         /// <param name="monInterestRate"></param>
         /// <returns></returns>
-        private static double CalculateFutureValue(double monthlyInvestment, int years, double monInterestRate)
+        private List<double> CalculateFutureValue(double monthlyInvestment, int years, double yearlyInterestRate)
         {
+            double monInterestRate = yearlyInterestRate / 12 / 100;
+            List<double> futureValueArray = new List<double>();
             double futureValue = 0;
 
             for (int i = 0; i < years * 12; i++)
             {
                 futureValue = (futureValue + monthlyInvestment) * (1 + monInterestRate);
+                if ((i+1) % 12 == 0)
+                {
+                    futureValueArray.Add(futureValue);
+                }
             }
 
-            return futureValue;
+            return futureValueArray;
         }
 
         /// <summary>
@@ -178,15 +207,15 @@ namespace FutureValue
                     return true;
                 }
             }
-            else
-            {
-                if (IsPresent(txtbox, txtName)
-                    && IsInt32(txtbox, txtName)
-                    && IsWithinRange(txtbox, txtName, minValue, maxValue))
-                {
-                    return true;
-                }
-            }
+            //else
+            //{
+            //    if (IsPresent(txtbox, txtName)
+            //        && IsInt32(txtbox, txtName)
+            //        && IsWithinRange(txtbox, txtName, minValue, maxValue))
+            //    {
+            //        return true;
+            //    }
+            //}
 
             return false;
         }
@@ -280,6 +309,7 @@ namespace FutureValue
             }
             return true;
         }
+
 
     }
 }

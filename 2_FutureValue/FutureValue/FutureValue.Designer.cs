@@ -33,11 +33,11 @@
             this.labNumYears = new System.Windows.Forms.Label();
             this.labFutureValue = new System.Windows.Forms.Label();
             this.txtMonInvestment = new System.Windows.Forms.TextBox();
-            this.txtFutureValue = new System.Windows.Forms.TextBox();
-            this.txtNumYears = new System.Windows.Forms.TextBox();
             this.txtYearlyInterestRate = new System.Windows.Forms.TextBox();
             this.btnCalculate = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
+            this.cboNumberOfYears = new System.Windows.Forms.ComboBox();
+            this.lstFutureValue = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // labMonInvestment
@@ -89,35 +89,18 @@
             this.txtMonInvestment.TextChanged += new System.EventHandler(this.ClearFutureValue);
             this.txtMonInvestment.MouseHover += new System.EventHandler(this.ClearFutureValue);
             // 
-            // txtFutureValue
-            // 
-            this.txtFutureValue.Location = new System.Drawing.Point(196, 191);
-            this.txtFutureValue.Name = "txtFutureValue";
-            this.txtFutureValue.ReadOnly = true;
-            this.txtFutureValue.Size = new System.Drawing.Size(100, 26);
-            this.txtFutureValue.TabIndex = 5;
-            this.txtFutureValue.TabStop = false;
-            // 
-            // txtNumYears
-            // 
-            this.txtNumYears.Location = new System.Drawing.Point(196, 131);
-            this.txtNumYears.Name = "txtNumYears";
-            this.txtNumYears.Size = new System.Drawing.Size(100, 26);
-            this.txtNumYears.TabIndex = 7;
-            this.txtNumYears.TextChanged += new System.EventHandler(this.ClearFutureValue);
-            // 
             // txtYearlyInterestRate
             // 
             this.txtYearlyInterestRate.Location = new System.Drawing.Point(196, 79);
             this.txtYearlyInterestRate.Name = "txtYearlyInterestRate";
             this.txtYearlyInterestRate.Size = new System.Drawing.Size(100, 26);
-            this.txtYearlyInterestRate.TabIndex = 6;
+            this.txtYearlyInterestRate.TabIndex = 5;
             this.txtYearlyInterestRate.TextChanged += new System.EventHandler(this.ClearFutureValue);
             this.txtYearlyInterestRate.DoubleClick += new System.EventHandler(this.txtYearlyInterestRate_DoubleClick);
             // 
             // btnCalculate
             // 
-            this.btnCalculate.Location = new System.Drawing.Point(60, 269);
+            this.btnCalculate.Location = new System.Drawing.Point(196, 374);
             this.btnCalculate.Name = "btnCalculate";
             this.btnCalculate.Size = new System.Drawing.Size(87, 31);
             this.btnCalculate.TabIndex = 8;
@@ -128,7 +111,7 @@
             // btnExit
             // 
             this.btnExit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnExit.Location = new System.Drawing.Point(196, 269);
+            this.btnExit.Location = new System.Drawing.Point(325, 374);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(87, 31);
             this.btnExit.TabIndex = 9;
@@ -136,18 +119,38 @@
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
+            // cboNumberOfYears
+            // 
+            this.cboNumberOfYears.DropDownHeight = 70;
+            this.cboNumberOfYears.FormattingEnabled = true;
+            this.cboNumberOfYears.IntegralHeight = false;
+            this.cboNumberOfYears.Location = new System.Drawing.Point(196, 137);
+            this.cboNumberOfYears.Name = "cboNumberOfYears";
+            this.cboNumberOfYears.Size = new System.Drawing.Size(100, 28);
+            this.cboNumberOfYears.TabIndex = 6;
+            // 
+            // lstFutureValue
+            // 
+            this.lstFutureValue.FormattingEnabled = true;
+            this.lstFutureValue.ItemHeight = 20;
+            this.lstFutureValue.Location = new System.Drawing.Point(196, 194);
+            this.lstFutureValue.Name = "lstFutureValue";
+            this.lstFutureValue.Size = new System.Drawing.Size(235, 144);
+            this.lstFutureValue.TabIndex = 10;
+            this.lstFutureValue.TabStop = false;
+            // 
             // FutureValueForm
             // 
             this.AcceptButton = this.btnCalculate;
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnExit;
-            this.ClientSize = new System.Drawing.Size(350, 333);
+            this.ClientSize = new System.Drawing.Size(513, 432);
+            this.Controls.Add(this.lstFutureValue);
+            this.Controls.Add(this.cboNumberOfYears);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnCalculate);
             this.Controls.Add(this.txtYearlyInterestRate);
-            this.Controls.Add(this.txtNumYears);
-            this.Controls.Add(this.txtFutureValue);
             this.Controls.Add(this.txtMonInvestment);
             this.Controls.Add(this.labFutureValue);
             this.Controls.Add(this.labNumYears);
@@ -158,6 +161,7 @@
             this.Name = "FutureValueForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Future Value";
+            this.Load += new System.EventHandler(this.FutureValueForm_Load);
             this.DoubleClick += new System.EventHandler(this.FutureValueForm_DoubleClick);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -171,11 +175,11 @@
         private System.Windows.Forms.Label labNumYears;
         private System.Windows.Forms.Label labFutureValue;
         private System.Windows.Forms.TextBox txtMonInvestment;
-        private System.Windows.Forms.TextBox txtFutureValue;
-        private System.Windows.Forms.TextBox txtNumYears;
         private System.Windows.Forms.TextBox txtYearlyInterestRate;
         private System.Windows.Forms.Button btnCalculate;
         private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.ComboBox cboNumberOfYears;
+        private System.Windows.Forms.ListBox lstFutureValue;
     }
 }
 
