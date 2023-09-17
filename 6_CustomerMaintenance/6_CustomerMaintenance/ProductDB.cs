@@ -4,8 +4,6 @@ namespace _6_CustomerMaintenance
 {
     public class ProductDB
     {
-
-
         private List<Product> productsFile = new List<Product>();
 
         public ProductDB()
