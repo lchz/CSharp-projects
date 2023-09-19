@@ -53,6 +53,7 @@ namespace PekingMastersGameApp
             }
 
             cmbNewSeason.SelectedIndex = 0;
+            dateTimePicker.Value = DateTime.Today;
 
         }
 
@@ -79,13 +80,15 @@ namespace PekingMastersGameApp
                 return;
             }
 
-            // TODO: Save new game to Excel => DONE
-            // TODO: Update display in Main
+
             StatsDB.Save_Game(season, ep, date, day, gameNum, gameName, status);
 
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
+
+        // TODO: Save new game to Excel => DONE
+        // TODO: Update display in Main => DONE
 
     }
 }

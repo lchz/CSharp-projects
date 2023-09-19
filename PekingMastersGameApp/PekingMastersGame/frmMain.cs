@@ -133,8 +133,20 @@ namespace PekingMastersGameApp
             DialogResult selectedButton = deleteForm.ShowDialog();
             if (selectedButton == DialogResult.OK)
             {
-                
                 MessageBox.Show("Game deleted successfully!", "Delete Game Success", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                string command = "SELECT ID, Love, Date, Episode, Day, Game, Name, Status FROM [";
+                string command2 = "]";
+                dataGrid.DataSource = StatsDB.GetData(command, command2);
+            }
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            frmEdit editForm = new frmEdit();
+            DialogResult selectedButton = editForm.ShowDialog();
+            if (selectedButton == DialogResult.OK)
+            {
+                MessageBox.Show("Game edited successfully!", "Edit Game Success", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                 string command = "SELECT ID, Love, Date, Episode, Day, Game, Name, Status FROM [";
                 string command2 = "]";
                 dataGrid.DataSource = StatsDB.GetData(command, command2);
@@ -144,14 +156,11 @@ namespace PekingMastersGameApp
 
 
         // TODO: Modify stats => DONE
-
         // TODO: Add new stats. => DONE
-
         // TODO: Delete game => DONE [ID after the deleted item is not changed]
+        // TODO: Edit function: To edit rows => DONE
 
         // TODO: Ask if the last match in the week, if so, then add an empty row to the formatted cells. 
-
-        // TODO: Edit function: To edit rows
 
         // TODO: When the main form is maximized, the content size changes accordingly.
     }

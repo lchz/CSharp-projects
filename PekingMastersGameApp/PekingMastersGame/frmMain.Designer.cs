@@ -149,9 +149,10 @@
             // dataGrid
             // 
             this.dataGrid.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dataGrid.Location = new System.Drawing.Point(144, 89);
+            this.dataGrid.Location = new System.Drawing.Point(144, 69);
             this.dataGrid.Name = "dataGrid";
-            this.dataGrid.Size = new System.Drawing.Size(1046, 319);
+            this.dataGrid.ReadOnly = true;
+            this.dataGrid.Size = new System.Drawing.Size(1046, 386);
             this.dataGrid.TabIndex = 11;
             // 
             // btnAddNew
@@ -176,6 +177,7 @@
             this.btnEdit.TabIndex = 13;
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = false;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnDelete
             // 
