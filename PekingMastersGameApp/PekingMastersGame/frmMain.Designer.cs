@@ -40,6 +40,8 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.dataGrid = new System.Windows.Forms.DataGridView();
             this.btnAddNew = new System.Windows.Forms.Button();
+            this.btnEdit = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -146,7 +148,7 @@
             // 
             // dataGrid
             // 
-            this.dataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGrid.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dataGrid.Location = new System.Drawing.Point(144, 89);
             this.dataGrid.Name = "dataGrid";
             this.dataGrid.Size = new System.Drawing.Size(1046, 319);
@@ -154,9 +156,9 @@
             // 
             // btnAddNew
             // 
-            this.btnAddNew.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.btnAddNew.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.btnAddNew.Location = new System.Drawing.Point(739, 10);
+            this.btnAddNew.BackColor = System.Drawing.Color.Gold;
+            this.btnAddNew.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnAddNew.Location = new System.Drawing.Point(739, 14);
             this.btnAddNew.Name = "btnAddNew";
             this.btnAddNew.Size = new System.Drawing.Size(92, 34);
             this.btnAddNew.TabIndex = 12;
@@ -164,12 +166,37 @@
             this.btnAddNew.UseVisualStyleBackColor = false;
             this.btnAddNew.Click += new System.EventHandler(this.btnAddNew_Click);
             // 
+            // btnEdit
+            // 
+            this.btnEdit.BackColor = System.Drawing.Color.YellowGreen;
+            this.btnEdit.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnEdit.Location = new System.Drawing.Point(881, 14);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(92, 34);
+            this.btnEdit.TabIndex = 13;
+            this.btnEdit.Text = "Edit";
+            this.btnEdit.UseVisualStyleBackColor = false;
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.BackColor = System.Drawing.Color.Firebrick;
+            this.btnDelete.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.btnDelete.Location = new System.Drawing.Point(1024, 14);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(97, 36);
+            this.btnDelete.TabIndex = 14;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(1237, 521);
+            this.Controls.Add(this.btnDelete);
+            this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.btnAddNew);
             this.Controls.Add(this.dataGrid);
             this.Controls.Add(this.btnCancel);
@@ -209,6 +236,8 @@
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.DataGridView dataGrid;
         private System.Windows.Forms.Button btnAddNew;
+        private System.Windows.Forms.Button btnEdit;
+        private System.Windows.Forms.Button btnDelete;
     }
 }
 

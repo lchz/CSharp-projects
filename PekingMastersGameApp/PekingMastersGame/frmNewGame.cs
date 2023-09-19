@@ -79,15 +79,13 @@ namespace PekingMastersGameApp
                 return;
             }
 
-            // TODO: Save new game to Excel & Update display in Main
+            // TODO: Save new game to Excel => DONE
+            // TODO: Update display in Main
             StatsDB.Save_Game(season, ep, date, day, gameNum, gameName, status);
 
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
-
-        // TODO: Check if Excel closed when closing!
-        // Esim. bool isExcelClose = false;
 
     }
 }

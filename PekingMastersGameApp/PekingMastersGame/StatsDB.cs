@@ -10,9 +10,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 
-
 //Microsoft Excel 16 object in references-> COM tab
 using Excel = Microsoft.Office.Interop.Excel;
+using Microsoft.Office.Interop.Excel;
+using DataTable = System.Data.DataTable;
 
 namespace PekingMastersGameApp
 {
@@ -50,6 +51,37 @@ namespace PekingMastersGameApp
             return dt;
         }
 
+        public static void Delete_Game(string deleteID)
+        {
+
+            Excel.Application xlApp = new Excel.Application();
+
+            Excel.Workbook xlWorkbook = xlApp.Workbooks.Open(StatsDB.FILE_PATH);
+            Excel._Worksheet xlWorksheet = xlWorkbook.Sheets[1];
+            //Excel.Range xlRange = xlWorksheet.UsedRange;
+
+            Excel.Range last = xlWorksheet.Cells.SpecialCells(Excel.XlCellType.xlCellTypeLastCell, Type.Missing);
+            Excel.Range range = xlWorksheet.get_Range("A1", last);
+
+            
+            //int rowIndex = last.Row + 1;
+            //int lastUsedColumn = last.Column;
+
+            foreach (Excel.Range r in range.Rows)
+            {
+
+                if (xlWorksheet.Cells[r.Row, 1].Value != null && xlWorksheet.Cells[r.Row, 1].Value.ToString() == deleteID)
+                {
+                    r.EntireRow.Delete(XlDeleteShiftDirection.xlShiftUp);
+                }
+            }
+
+            xlWorkbook.Save();
+            xlWorkbook.Close();
+            xlApp.Quit();
+        }
+
+
         public static void Save_Game(string season, string ep, DateTime date, string day, string gameNum, string gameName, string status)
         {
 
@@ -65,22 +97,21 @@ namespace PekingMastersGameApp
             int rowIndex = last.Row + 1;
             //int lastUsedColumn = last.Column;
 
-            //bool correctID = Int32.TryParse(xlWorksheet.Cells[rowIndex - 1, 1].Value.ToString(), out int lastID);
-            int lastID;
+            int lastID = -1;
             try
             {
                 lastID = Convert.ToInt32(xlWorksheet.Cells[rowIndex - 1, 1].Value);
-
+                if (lastID <= 0)
+                {
+                    lastID = Convert.ToInt32(xlWorksheet.Cells[rowIndex - 2, 1].Value);
+                }
             }
             catch (Exception)
             {
-                lastID = Convert.ToInt32(xlWorksheet.Cells[rowIndex - 2, 1].Value);
+                MessageBox.Show("Exception with detecting the last ID.", "ID Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                xlWorkbook.Close();
+                xlApp.Quit();
             }
-
-            //if (correctID == false)
-            //{
-            //    lastID = Convert.ToInt32(xlWorksheet.Cells[rowIndex - 2, 1].Value);
-            //}
 
             xlWorksheet.Cells[rowIndex, 1] = lastID + 1; // ID
             xlWorksheet.Cells[rowIndex, 2] = season;
@@ -99,5 +130,6 @@ namespace PekingMastersGameApp
             xlApp.Quit();
         }
 
+        
     }
 }

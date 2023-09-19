@@ -140,7 +140,7 @@
             this.panel2.Controls.Add(this.dateTimePicker);
             this.panel2.Location = new System.Drawing.Point(149, 12);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(398, 437);
+            this.panel2.Size = new System.Drawing.Size(208, 437);
             this.panel2.TabIndex = 1;
             // 
             // cmbNewName
@@ -204,7 +204,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(26, 12);
+            this.btnSave.Location = new System.Drawing.Point(45, 12);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(91, 36);
             this.btnSave.TabIndex = 2;
@@ -215,7 +215,7 @@
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(234, 12);
+            this.btnCancel.Location = new System.Drawing.Point(171, 12);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(91, 36);
             this.btnCancel.TabIndex = 3;
@@ -226,9 +226,9 @@
             // 
             this.panel3.Controls.Add(this.btnSave);
             this.panel3.Controls.Add(this.btnCancel);
-            this.panel3.Location = new System.Drawing.Point(190, 470);
+            this.panel3.Location = new System.Drawing.Point(59, 455);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(357, 66);
+            this.panel3.Size = new System.Drawing.Size(301, 66);
             this.panel3.TabIndex = 4;
             // 
             // frmNewGame
@@ -237,7 +237,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(587, 553);
+            this.ClientSize = new System.Drawing.Size(412, 528);
             this.ControlBox = false;
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
@@ -248,7 +248,7 @@
             this.MaximizeBox = false;
             this.Name = "frmNewGame";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Add New Episode";
+            this.Text = "Add New Game";
             this.Load += new System.EventHandler(this.frmNewEpisode_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
