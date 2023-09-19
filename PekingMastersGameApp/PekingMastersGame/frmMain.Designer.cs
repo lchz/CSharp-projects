@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.cmbSeason = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbStatus = new System.Windows.Forms.ComboBox();
@@ -36,15 +35,12 @@
             this.lblJi = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cmbEpisode = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
             this.dataGrid = new System.Windows.Forms.DataGridView();
-            this.pkMatchBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.pkMatchBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.btnAddNew = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pkMatchBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pkMatchBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // cmbSeason
@@ -57,6 +53,7 @@
             this.cmbSeason.Name = "cmbSeason";
             this.cmbSeason.Size = new System.Drawing.Size(50, 28);
             this.cmbSeason.TabIndex = 0;
+            this.cmbSeason.SelectedIndexChanged += new System.EventHandler(this.cmbSeason_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -72,12 +69,13 @@
             // 
             this.cmbStatus.FormattingEnabled = true;
             this.cmbStatus.Items.AddRange(new object[] {
-            "ALL",
-            "WIN"});
+            "All",
+            "Win"});
             this.cmbStatus.Location = new System.Drawing.Point(525, 12);
             this.cmbStatus.Name = "cmbStatus";
             this.cmbStatus.Size = new System.Drawing.Size(93, 28);
             this.cmbStatus.TabIndex = 3;
+            this.cmbStatus.SelectedIndexChanged += new System.EventHandler(this.cmbStatus_SelectedIndexChanged);
             // 
             // lblDi
             // 
@@ -115,13 +113,14 @@
             this.label3.TabIndex = 7;
             this.label3.Text = "第";
             // 
-            // comboBox1
+            // cmbEpisode
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(297, 10);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(50, 28);
-            this.comboBox1.TabIndex = 6;
+            this.cmbEpisode.FormattingEnabled = true;
+            this.cmbEpisode.Location = new System.Drawing.Point(297, 10);
+            this.cmbEpisode.Name = "cmbEpisode";
+            this.cmbEpisode.Size = new System.Drawing.Size(50, 28);
+            this.cmbEpisode.TabIndex = 6;
+            this.cmbEpisode.SelectedIndexChanged += new System.EventHandler(this.cmbEpisode_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -153,26 +152,31 @@
             this.dataGrid.Size = new System.Drawing.Size(1046, 319);
             this.dataGrid.TabIndex = 11;
             // 
-            // pkMatchBindingSource
+            // btnAddNew
             // 
-            this.pkMatchBindingSource.DataSource = typeof(PekingMastersGameApp.PkMatch);
-            // 
-            // pkMatchBindingSource1
-            // 
-            this.pkMatchBindingSource1.DataSource = typeof(PekingMastersGameApp.PkMatch);
+            this.btnAddNew.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.btnAddNew.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.btnAddNew.Location = new System.Drawing.Point(739, 10);
+            this.btnAddNew.Name = "btnAddNew";
+            this.btnAddNew.Size = new System.Drawing.Size(92, 34);
+            this.btnAddNew.TabIndex = 12;
+            this.btnAddNew.Text = "Add New";
+            this.btnAddNew.UseVisualStyleBackColor = false;
+            this.btnAddNew.Click += new System.EventHandler(this.btnAddNew_Click);
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(1237, 527);
+            this.ClientSize = new System.Drawing.Size(1237, 521);
+            this.Controls.Add(this.btnAddNew);
             this.Controls.Add(this.dataGrid);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cmbEpisode);
             this.Controls.Add(this.lblJi);
             this.Controls.Add(this.lblDi);
             this.Controls.Add(this.cmbStatus);
@@ -186,8 +190,6 @@
             this.Text = "Peking Masters Game";
             this.Load += new System.EventHandler(this.frmMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pkMatchBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pkMatchBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -202,12 +204,11 @@
         private System.Windows.Forms.Label lblJi;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cmbEpisode;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.DataGridView dataGrid;
-        private System.Windows.Forms.BindingSource pkMatchBindingSource;
-        private System.Windows.Forms.BindingSource pkMatchBindingSource1;
+        private System.Windows.Forms.Button btnAddNew;
     }
 }
 
