@@ -58,9 +58,9 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.BackColor = System.Drawing.Color.Crimson;
+            this.btnDelete.BackColor = System.Drawing.Color.Firebrick;
             this.btnDelete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnDelete.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnDelete.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.btnDelete.Location = new System.Drawing.Point(121, 311);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(98, 34);
@@ -86,7 +86,7 @@
             // btnSearch
             // 
             this.btnSearch.AutoEllipsis = true;
-            this.btnSearch.BackColor = System.Drawing.Color.Ivory;
+            this.btnSearch.BackColor = System.Drawing.Color.Moccasin;
             this.btnSearch.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnSearch.Location = new System.Drawing.Point(306, 32);
             this.btnSearch.Name = "btnSearch";

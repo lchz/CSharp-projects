@@ -204,12 +204,13 @@
             // 
             // btnSave
             // 
+            this.btnSave.BackColor = System.Drawing.Color.Gold;
             this.btnSave.Location = new System.Drawing.Point(45, 12);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(91, 36);
             this.btnSave.TabIndex = 2;
             this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnCancel

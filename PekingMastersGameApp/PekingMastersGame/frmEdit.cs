@@ -35,9 +35,25 @@ namespace PekingMastersGameApp
             Disply_ComboBox();
 
             string editID = txtEditID.Text;
+            if (editID == "" || !Int32.TryParse(editID, out int o) || Convert.ToInt32(editID) < 0)
+            {
+                MessageBox.Show("ID is not valid!", "ID Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                txtEditID.Clear();
+                txtEditID.Focus();
+                return;
+            }
+
             string command = "SELECT ID, Season, Episode, Date, Day, Game, Name, Status FROM [";
             string command2 = $"] WHERE ID = {editID}";
             DataTable editGame = StatsDB.GetData(command, command2);
+
+            if (editGame.Rows.Count == 0)
+            {
+                MessageBox.Show("ID is not found!", "ID Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                txtEditID.Clear();
+                txtEditID.Focus();
+                return;
+            }
 
             txtNewID.Text = editGame.Rows[0][0].ToString();
             cmbNewSeason.SelectedItem = editGame.Rows[0][1].ToString();
@@ -51,17 +67,26 @@ namespace PekingMastersGameApp
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            string season = cmbNewSeason.SelectedItem.ToString();
-            string ep = cmbNewEp.Text.ToString();
-            DateTime date = dateTimePicker.Value;
-            string day = cmbNewDay.Text.ToString();
-            string gameNum = cmbNewGameNum.Text.ToString();
-            string gameName = cmbNewName.Text.ToString();
-            string status = cmbNewStatus.Text.ToString();
-
+            string season = null, ep = null, day = null, gameNum = null, gameName = null, status = null;
+            DateTime date = default(DateTime);
+            try
+            {
+                season = cmbNewSeason.SelectedItem.ToString();
+                ep = cmbNewEp.Text.ToString();
+                date = dateTimePicker.Value;
+                day = cmbNewDay.Text.ToString();
+                gameNum = cmbNewGameNum.Text.ToString();
+                gameName = cmbNewName.Text.ToString();
+                status = cmbNewStatus.Text.ToString();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Please check all the input data!", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+            }
+            
             if (season == "" || ep == "" || day == "" || gameNum == "" || gameName == "" || status == "")
             {
-                MessageBox.Show("All the fields are required!", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                MessageBox.Show("All the fields are required!", "Empty Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
                 return;
             }
 

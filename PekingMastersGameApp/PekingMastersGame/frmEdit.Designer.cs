@@ -76,11 +76,11 @@
             // 
             // btnEdit
             // 
-            this.btnEdit.BackColor = System.Drawing.Color.LightSalmon;
+            this.btnEdit.BackColor = System.Drawing.Color.YellowGreen;
             this.btnEdit.Location = new System.Drawing.Point(45, 12);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(91, 36);
-            this.btnEdit.TabIndex = 2;
+            this.btnEdit.TabIndex = 6;
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = false;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
@@ -92,7 +92,7 @@
             this.btnCancel.Location = new System.Drawing.Point(171, 12);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(91, 36);
-            this.btnCancel.TabIndex = 3;
+            this.btnCancel.TabIndex = 7;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -115,7 +115,7 @@
             this.panel4.Location = new System.Drawing.Point(39, 80);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(415, 456);
-            this.panel4.TabIndex = 5;
+            this.panel4.TabIndex = 4;
             // 
             // panel6
             // 
@@ -139,7 +139,7 @@
             this.txtNewID.Name = "txtNewID";
             this.txtNewID.ReadOnly = true;
             this.txtNewID.Size = new System.Drawing.Size(121, 26);
-            this.txtNewID.TabIndex = 7;
+            this.txtNewID.TabIndex = 0;
             // 
             // cmbNewName
             // 
@@ -214,7 +214,7 @@
             this.panel5.Location = new System.Drawing.Point(18, 3);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(115, 452);
-            this.panel5.TabIndex = 1;
+            this.panel5.TabIndex = 0;
             // 
             // lblID
             // 
@@ -291,12 +291,12 @@
             // btnSearch
             // 
             this.btnSearch.AutoEllipsis = true;
-            this.btnSearch.BackColor = System.Drawing.Color.Khaki;
+            this.btnSearch.BackColor = System.Drawing.Color.Moccasin;
             this.btnSearch.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnSearch.Location = new System.Drawing.Point(335, 28);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(74, 26);
-            this.btnSearch.TabIndex = 8;
+            this.btnSearch.Size = new System.Drawing.Size(68, 26);
+            this.btnSearch.TabIndex = 3;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = false;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
@@ -306,7 +306,7 @@
             this.txtEditID.Location = new System.Drawing.Point(205, 28);
             this.txtEditID.Name = "txtEditID";
             this.txtEditID.Size = new System.Drawing.Size(100, 26);
-            this.txtEditID.TabIndex = 7;
+            this.txtEditID.TabIndex = 2;
             // 
             // label8
             // 
@@ -315,7 +315,7 @@
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(128, 20);
-            this.label8.TabIndex = 6;
+            this.label8.TabIndex = 1;
             this.label8.Text = "Game ID to Edit:";
             // 
             // frmEdit

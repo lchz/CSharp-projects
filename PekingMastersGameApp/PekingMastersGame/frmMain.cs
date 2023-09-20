@@ -163,5 +163,7 @@ namespace PekingMastersGameApp
         // TODO: Ask if the last match in the week, if so, then add an empty row to the formatted cells. 
 
         // TODO: When the main form is maximized, the content size changes accordingly.
+
+        // TODO: Reverse order by date
     }
 }

@@ -29,9 +29,25 @@ namespace PekingMastersGameApp
         private void btnSearch_Click(object sender, EventArgs e)
         {
             string deleteID = txtDeleteID.Text;
+            if (deleteID == "" || !Int32.TryParse(deleteID, out int o) || Convert.ToInt32(deleteID) < 0)
+            {
+                MessageBox.Show("ID is not valid!", "ID Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                txtDeleteID.Clear();
+                txtDeleteID.Focus();
+                return;
+            }
+
             string command = "SELECT ID, Season, Episode, Date, Day, Game, Name, Status FROM [";
             string command2 = $"] WHERE ID = {deleteID}";
             DataTable deleteGame = StatsDB.GetData(command, command2);
+
+            if (deleteGame.Rows.Count == 0)
+            {
+                MessageBox.Show("ID is not found!", "ID Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                txtDeleteID.Clear();
+                txtDeleteID.Focus();
+                return;
+            }
 
             lblGameInfo.Text = $"ID {deleteGame.Rows[0][0]}\n" +
                                 $"时间 {deleteGame.Rows[0][3]:yyyy-MM-dd}\n" +
