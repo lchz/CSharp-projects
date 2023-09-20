@@ -52,9 +52,8 @@ namespace PekingMastersGameApp
                 cmbNewStatus.Items.Add(s);
             }
 
-            cmbNewSeason.SelectedIndex = 0;
+            cmbNewSeason.SelectedIndex = 1;
             dateTimePicker.Value = DateTime.Today;
-
         }
 
 
@@ -65,7 +64,6 @@ namespace PekingMastersGameApp
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-
             string season = cmbNewSeason.Text.ToString();
             string ep = cmbNewEp.Text.ToString();
             DateTime date = dateTimePicker.Value;
@@ -86,9 +84,6 @@ namespace PekingMastersGameApp
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
-
-        // TODO: Save new game to Excel => DONE
-        // TODO: Update display in Main => DONE
 
     }
 }

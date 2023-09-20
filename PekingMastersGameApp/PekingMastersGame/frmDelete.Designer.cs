@@ -61,7 +61,7 @@
             this.btnDelete.BackColor = System.Drawing.Color.Firebrick;
             this.btnDelete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnDelete.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.btnDelete.Location = new System.Drawing.Point(121, 311);
+            this.btnDelete.Location = new System.Drawing.Point(152, 311);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(98, 34);
             this.btnDelete.TabIndex = 2;
@@ -71,11 +71,11 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.BackColor = System.Drawing.Color.Silver;
+            this.btnCancel.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.btnCancel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnCancel.Location = new System.Drawing.Point(266, 311);
+            this.btnCancel.Location = new System.Drawing.Point(282, 311);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(98, 34);
             this.btnCancel.TabIndex = 3;
@@ -123,7 +123,7 @@
             this.panel1.Controls.Add(this.lblGameDelete);
             this.panel1.Location = new System.Drawing.Point(29, 76);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(335, 208);
+            this.panel1.Size = new System.Drawing.Size(351, 208);
             this.panel1.TabIndex = 7;
             // 
             // frmDelete

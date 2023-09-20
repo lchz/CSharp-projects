@@ -99,9 +99,21 @@ namespace PekingMastersGameApp
             }
 
             StatsDB.Update_Game(txtEditID.Text, season, ep, date, day, gameNum, gameName, status);
-
             this.DialogResult = DialogResult.OK;
             this.Close();
+
+
+            // Below UPDATE command not working :(
+
+            //string command = "SELECT ID, Love, Season, Episode, Date, Day, Game, Name, Status FROM [";
+            //string command2 = $"]";
+            //string update_command = "UPDATE [";
+            //string update_command2 = $"] SET 'Season' = {season}, 'Episode' = {ep}, 'Date' = {date:d}, " +
+            //    $"'Day' = {day}, 'Game' = {gameNum}, 'Name' = {gameName}, 'Status' = {status} " +
+            //    $"WHERE 'ID' = {txtEditID.Text}";
+
+            //StatsDB.UpdateGame_SQL(StatsDB.GetData(command, command2), update_command, update_command2);
+
         }
 
         private void Disply_ComboBox()

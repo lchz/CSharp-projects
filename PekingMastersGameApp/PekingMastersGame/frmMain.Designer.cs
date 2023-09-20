@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.cmbSeason = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbStatus = new System.Windows.Forms.ComboBox();
@@ -48,10 +49,7 @@
             // cmbSeason
             // 
             this.cmbSeason.FormattingEnabled = true;
-            this.cmbSeason.Items.AddRange(new object[] {
-            "11",
-            "9"});
-            this.cmbSeason.Location = new System.Drawing.Point(165, 10);
+            this.cmbSeason.Location = new System.Drawing.Point(189, 12);
             this.cmbSeason.Name = "cmbSeason";
             this.cmbSeason.Size = new System.Drawing.Size(50, 28);
             this.cmbSeason.TabIndex = 0;
@@ -60,19 +58,18 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.label1.Location = new System.Drawing.Point(13, 13);
+            this.label1.BackColor = System.Drawing.Color.OrangeRed;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label1.ForeColor = System.Drawing.SystemColors.MenuBar;
+            this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(89, 20);
+            this.label1.Size = new System.Drawing.Size(122, 26);
             this.label1.TabIndex = 1;
             this.label1.Text = "京城大师赛";
             // 
             // cmbStatus
             // 
             this.cmbStatus.FormattingEnabled = true;
-            this.cmbStatus.Items.AddRange(new object[] {
-            "All",
-            "Win"});
             this.cmbStatus.Location = new System.Drawing.Point(525, 12);
             this.cmbStatus.Name = "cmbStatus";
             this.cmbStatus.Size = new System.Drawing.Size(93, 28);
@@ -82,7 +79,7 @@
             // lblDi
             // 
             this.lblDi.AutoSize = true;
-            this.lblDi.Location = new System.Drawing.Point(140, 15);
+            this.lblDi.Location = new System.Drawing.Point(164, 17);
             this.lblDi.Name = "lblDi";
             this.lblDi.Size = new System.Drawing.Size(25, 20);
             this.lblDi.TabIndex = 4;
@@ -91,7 +88,7 @@
             // lblJi
             // 
             this.lblJi.AutoSize = true;
-            this.lblJi.Location = new System.Drawing.Point(220, 15);
+            this.lblJi.Location = new System.Drawing.Point(244, 17);
             this.lblJi.Name = "lblJi";
             this.lblJi.Size = new System.Drawing.Size(25, 20);
             this.lblJi.TabIndex = 5;
@@ -100,7 +97,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(352, 15);
+            this.label2.Location = new System.Drawing.Point(375, 15);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(25, 20);
             this.label2.TabIndex = 8;
@@ -109,7 +106,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(272, 15);
+            this.label3.Location = new System.Drawing.Point(295, 15);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(25, 20);
             this.label3.TabIndex = 7;
@@ -118,7 +115,7 @@
             // cmbEpisode
             // 
             this.cmbEpisode.FormattingEnabled = true;
-            this.cmbEpisode.Location = new System.Drawing.Point(297, 10);
+            this.cmbEpisode.Location = new System.Drawing.Point(320, 10);
             this.cmbEpisode.Name = "cmbEpisode";
             this.cmbEpisode.Size = new System.Drawing.Size(50, 28);
             this.cmbEpisode.TabIndex = 6;
@@ -135,10 +132,11 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCancel.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.btnCancel.Location = new System.Drawing.Point(1073, 472);
+            this.btnCancel.Location = new System.Drawing.Point(1045, 579);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(91, 31);
             this.btnCancel.TabIndex = 10;
@@ -148,18 +146,30 @@
             // 
             // dataGrid
             // 
+            this.dataGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGrid.BackgroundColor = System.Drawing.Color.MistyRose;
             this.dataGrid.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dataGrid.Location = new System.Drawing.Point(144, 69);
+            this.dataGrid.Location = new System.Drawing.Point(156, 69);
             this.dataGrid.Name = "dataGrid";
             this.dataGrid.ReadOnly = true;
-            this.dataGrid.Size = new System.Drawing.Size(1046, 386);
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightCoral;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGrid.Size = new System.Drawing.Size(926, 487);
             this.dataGrid.TabIndex = 11;
             // 
             // btnAddNew
             // 
             this.btnAddNew.BackColor = System.Drawing.Color.Gold;
             this.btnAddNew.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnAddNew.Location = new System.Drawing.Point(739, 14);
+            this.btnAddNew.Location = new System.Drawing.Point(712, 10);
             this.btnAddNew.Name = "btnAddNew";
             this.btnAddNew.Size = new System.Drawing.Size(92, 34);
             this.btnAddNew.TabIndex = 12;
@@ -171,7 +181,7 @@
             // 
             this.btnEdit.BackColor = System.Drawing.Color.YellowGreen;
             this.btnEdit.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnEdit.Location = new System.Drawing.Point(881, 14);
+            this.btnEdit.Location = new System.Drawing.Point(851, 12);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(92, 34);
             this.btnEdit.TabIndex = 13;
@@ -183,7 +193,7 @@
             // 
             this.btnDelete.BackColor = System.Drawing.Color.Firebrick;
             this.btnDelete.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.btnDelete.Location = new System.Drawing.Point(1024, 14);
+            this.btnDelete.Location = new System.Drawing.Point(985, 10);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(97, 36);
             this.btnDelete.TabIndex = 14;
@@ -196,7 +206,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(1237, 521);
+            this.ClientSize = new System.Drawing.Size(1148, 622);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.btnAddNew);

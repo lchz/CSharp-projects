@@ -16,6 +16,7 @@ using Microsoft.Office.Interop.Excel;
 using DataTable = System.Data.DataTable;
 using System.Data.Common;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Data.SqlClient;
 
 namespace PekingMastersGameApp
 {
@@ -24,8 +25,8 @@ namespace PekingMastersGameApp
         private const string dir = @"C:\Users\TestiPC\Documents\Study\CSharp\";
         public static string FILE_PATH = dir + "PekingMastersGameStats.xlsx";
 
-        public static List<string> Seasons = new List<string> { "11", "9" };
-        public static List<string> Episodes = new List<string> { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" };
+        public static List<string> Seasons = new List<string> { "All", "11" };
+        public static List<string> Episodes = new List<string> { "All", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" };
         public static List<string> Days = new List<string> { "D1", "D2", "D3", "D4" };
         public static List<string> GameNum = new List<string> { "1", "2", "3", "4" };
         public static List<string> GameNames = new List<string> { "预女猎白混", "预女猎白", "石像鬼", "机械狼通灵师", "假面舞会", "魅使神差", "梦魇魔术师", "狼王野孩子", "乌鸦隐狼", "狼美猎人", "鬼魂新娘" };
@@ -167,6 +168,27 @@ namespace PekingMastersGameApp
 
         }
 
+        //public static DataTable UpdateGame_SQL(DataTable dt, string sqlCommand1, string sqlCommand2)
+        //{
+        //    string con = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source={0};Extended Properties='Excel 8.0;HDR={1}'";
+        //    con = String.Format(con, StatsDB.FILE_PATH, "yes");
+
+        //    //DataTable dt = new DataTable();
+
+        //    using (OleDbConnection excelConnection = new OleDbConnection(con))
+        //    {
+        //        excelConnection.Open();
+
+        //        DataTable dtexcel = excelConnection.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
+        //        string excelsheet = dtexcel.Rows[0]["TABLE_NAME"].ToString();
+        //        OleDbCommand command = new OleDbCommand(sqlCommand1 + excelsheet + sqlCommand2, excelConnection);
+        //        OleDbDataAdapter oda = new OleDbDataAdapter(command);
+        //        oda.Fill(dt); //System.Data.OleDb.OleDbException: 'No value given for one or more required parameters.' ??
+
+
+        //    }
+        //    return dt;
+        //}
 
 
     }

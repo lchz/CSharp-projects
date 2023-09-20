@@ -1,18 +1,14 @@
-﻿using Microsoft.Office.Interop.Excel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Data.OleDb;
-using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-//using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using DataTable = System.Data.DataTable;
-//using Excel = Microsoft.Office.Interop.Excel;
 
 namespace PekingMastersGameApp
 {
@@ -28,88 +24,68 @@ namespace PekingMastersGameApp
             this.Close();
         }
 
+        private bool initializing = true;
         private void frmMain_Load(object sender, EventArgs e)
         {
-            //season, episode, date, day, match, Name, status, love
-            cmbSeason.SelectedIndex = 0;
+            Display_ComboBox_Main();
+            //Select season = 11, episode = All, status = All
+            cmbSeason.SelectedIndex = 1;
+            cmbEpisode.SelectedIndex = 0;
+            cmbStatus.SelectedIndex = 0;
 
+            string command = "SELECT ID, Love, Date, Episode, Day, Game, Name, Status FROM [";
+            dataGrid.DataSource = StatsDB.GetData(command, "]");
+
+            initializing = false;
         }
 
-        /// <summary>
-        /// Find the episodes in the selected season.
-        /// </summary>
-        private void Collect_Episodes()
+        private void Display_ComboBox_Main()
         {
-            cmbEpisode.Items.Clear();
-            cmbEpisode.Items.Add("All");
-
-            string season = cmbSeason.SelectedItem.ToString();
-            string sqlCommand1 = "SELECT Episode FROM [";
-            string sqlCommand2 = "] WHERE Season = " + season;
-            DataTable dt = StatsDB.GetData(sqlCommand1, sqlCommand2);
-            
-            for (int i = 0; i < dt.Rows.Count; i++)
+            foreach (string season in StatsDB.Seasons)
             {
-                if (dt.Rows[i][0].ToString() != "" && !cmbEpisode.Items.Contains(dt.Rows[i][0]))
-                {
-                    cmbEpisode.Items.Add(dt.Rows[i][0]);
-                }
+                cmbSeason.Items.Add(season);
             }
-
-            cmbEpisode.SelectedIndex = 0;
-
+            foreach (string ep in StatsDB.Episodes)
+            {
+                cmbEpisode.Items.Add(ep);
+            }
+            foreach (string s in new List<string>{ "All", "Win"})
+            {
+                cmbStatus.Items.Add(s);
+            }
         }
 
         private void cmbSeason_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //MessageBox.Show("Change season: ");
-            string season = cmbSeason.SelectedItem.ToString();
+            if (initializing) // if initializing, the Load function will retrieve the data. Nothing needs to do here.
+            {
+                return;
+            }
 
             string command = "SELECT ID, Love, Date, Episode, Day, Game, Name, Status FROM [";
-            string command2 = "] WHERE Season = " + season;
-
-            dataGrid.DataSource = StatsDB.GetData(command, command2);
-
-            cmbSeason.SelectedItem = season;
-
-            Collect_Episodes();
-
+            dataGrid.DataSource = StatsDB.GetData(command, Get_Command2());
         }
 
         private void cmbEpisode_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //MessageBox.Show("Change Episode: ");
-            string ep = cmbEpisode.SelectedItem.ToString();
+            if (initializing)
+            {
+                return;
+            }
+
             string command = "SELECT ID, Love, Date, Episode, Day, Game, Name, Status FROM [";
-            string command2;
-
-            if (ep == "All")
-            {
-                command2 = "]";
-            }
-            else
-            {
-                string season = cmbSeason.SelectedItem.ToString();
-                command2 = "] WHERE Season = " + season + " AND Episode = " + ep;
-            }
-
-            dataGrid.DataSource = StatsDB.GetData(command, command2);
-
+            dataGrid.DataSource = StatsDB.GetData(command, Get_Command2());
         }
 
         private void cmbStatus_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string status = cmbStatus.SelectedItem.ToString();
-            string command = "SELECT ID, Love, Date, Episode, Day, Game, Name, Status FROM [";
-            string command2 = "]";
-
-            if (status == "Win")
+            if (initializing)
             {
-                string season = cmbSeason.SelectedItem.ToString();
-                command2 = "] WHERE Season = " + season + " AND Status = 1";
+                return;
             }
-
-            dataGrid.DataSource = StatsDB.GetData(command, command2);
+            
+            string command = "SELECT ID, Love, Date, Episode, Day, Game, Name, Status FROM [";
+            dataGrid.DataSource = StatsDB.GetData(command, Get_Command2());
         }
 
         private void btnAddNew_Click(object sender, EventArgs e)
@@ -153,16 +129,74 @@ namespace PekingMastersGameApp
             }
         }
 
+        private string Get_Command2()
+        {
+            string season = cmbSeason.SelectedItem.ToString();
+            string ep = cmbEpisode.SelectedItem.ToString();
+            string status = cmbStatus.SelectedItem.ToString();
+
+            string command2 = "]";
+
+            // all,all,all- ]                         all,all,win- ] where status=1
+            // ?,all,all- ] where season=?            ?,all,win- ] where season=? AND status=1
+            // all,?,all- ] where ep=?                all,?,win- ] where ep=? AND status=1
+            // ?,?,all- ] where season=? AND ep=?     ?,?,win- ] where season=? AND ep=? AND status=1
+            if (season == "All" && ep == "All" && status == "All")
+            {
+                return command2;
+            }
+
+            if (season == "All" && ep == "All" && status == "Win")
+            {
+                command2 += $" WHERE Status = 1";
+            }
+            else if (season != "All" && ep == "All")
+            {
+                if (status == "Win")
+                {
+                    command2 += $" WHERE Season = {season} AND Status = 1";
+                }
+                else
+                {
+                    command2 += $" WHERE Season = {season}";
+                }
+            }
+            else if (season == "All" && ep != "All")
+            {
+                if (status == "Win")
+                {
+                    command2 += $" WHERE Episode = {ep} AND Status = 1";
+                }
+                else
+                {
+                    command2 += $" WHERE Episode = {ep}";
+                }
+            }
+            else if (season != "All" && ep != "All")
+            {
+                if (status == "Win")
+                {
+                    command2 += $" WHERE Season = {season} AND Episode = {ep} AND Status = 1";
+                }
+                else
+                {
+                    command2 += $" WHERE Season = {season} AND Episode = {ep}";
+                }
+            }
+
+            return command2;
+        }
+
 
 
         // TODO: Modify stats => DONE
         // TODO: Add new stats. => DONE
         // TODO: Delete game => DONE [ID after the deleted item is not changed]
         // TODO: Edit function: To edit rows => DONE
+        // TODO: When the main form is maximized, the content size changes accordingly. => DONE!
 
-        // TODO: Ask if the last match in the week, if so, then add an empty row to the formatted cells. 
 
-        // TODO: When the main form is maximized, the content size changes accordingly.
+        // TODO: Ask if the last match in the week, if so, add an empty row to the formatted cells. 
 
         // TODO: Reverse order by date
     }
