@@ -68,7 +68,14 @@ namespace PekingMastersGameApp
         private void btnEdit_Click(object sender, EventArgs e)
         {
             string season = null, ep = null, day = null, gameNum = null, gameName = null, status = null;
-            DateTime date = default(DateTime);
+            DateTime date = default;
+            if (txtNewID.Text == "")
+            {
+                MessageBox.Show("Please search the game ID!", "Edit Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                txtEditID.Focus();
+                return;
+            }
+              
             try
             {
                 season = cmbNewSeason.SelectedItem.ToString();
@@ -81,7 +88,8 @@ namespace PekingMastersGameApp
             }
             catch (Exception)
             {
-                MessageBox.Show("Please check all the input data!", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                MessageBox.Show("Please check the input data!", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                return;
             }
             
             if (season == "" || ep == "" || day == "" || gameNum == "" || gameName == "" || status == "")

@@ -60,6 +60,13 @@ namespace PekingMastersGameApp
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            if (lblGameInfo.Text == "None")
+            {
+                MessageBox.Show("Please search the game ID!", "Delete Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                txtDeleteID.Focus();
+                return;
+            }
+
             string deleteID = txtDeleteID.Text;
 
             StatsDB.Delete_Game(deleteID);
